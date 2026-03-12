@@ -6,24 +6,24 @@ import Info from './pages/Info';
 import Gaming from './pages/Gaming';
 import Content from './pages/Content';
 import Partnerships from './pages/Partnerships';
-import Background from './components/Background';
 import './index.css';
+
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <>
-      <Background />
-      <Router>
+    <Router>
+      <Layout>
         <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/info" element={<Info />} />
-        <Route path="/gaming" element={<Gaming />} />
-        <Route path="/content" element={<Content />} />
-        <Route path="/partnerships" element={<Partnerships />} />
-      </Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/info" element={<Info />} />
+          <Route path="/gaming" element={<Gaming />} />
+          <Route path="/content" element={<Content />} />
+          <Route path="/partnerships" element={<Partnerships />} />
+        </Routes>
+      </Layout>
     </Router>
-    </>
   );
 }
 

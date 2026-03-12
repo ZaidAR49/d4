@@ -1,56 +1,145 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
-
 :root {
-  --bg-color: #000000;
-  --text-color: #ffffff;
-  --magenta: #ff00a0;
-  --cyan: #00ffff;
-  --grey-border: #3b4252;
+  /* Core Palette */
+  --bg-pure: #000000;
+  --bg-deep: #050505;
+  --bg-elevated: #0a0a0a;
+  
+  /* Accent Colors */
+  --accent-cyan: #00f5ff;
+  --accent-magenta: #ff00e5;
+  --accent-indigo: #6366f1;
+  
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #52525b;
+  
+  /* Borders & Glass */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-bright: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(10, 10, 10, 0.75);
+  --glass-blur: blur(12px);
+  
+  /* Shadows */
+  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
+  --glow-magenta: 0 0 20px rgba(255, 0, 229, 0.3);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-pure);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.5;
 }
 
-/* Utilities */
-.text-glow {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
 }
 
-.box-glow {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
 }
 
-.input-magenta {
-  border: 1px solid var(--magenta);
-  outline: none;
-}
-.input-magenta:focus {
-  box-shadow: 0 0 8px var(--magenta);
-}
-
-.btn-cyan {
-  border: 1px solid var(--cyan);
-  color: var(--cyan);
-  background: rgba(0, 255, 255, 0.05);
-  transition: all 0.2s ease-in-out;
-}
-.btn-cyan:hover {
-  box-shadow: 0 0 10px var(--cyan);
-  background: rgba(0, 255, 255, 0.1);
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button {
-  cursor: pointer;
-  font-family: inherit;
+.glass-card:hover {
+  border-color: var(--border-bright);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Typography Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-cyan { color: var(--accent-cyan); }
+.text-magenta { color: var(--accent-magenta); }
+
+/* Glow Effects */
+.glow-text-cyan { text-shadow: var(--glow-cyan); }
+.glow-text-magenta { text-shadow: var(--glow-magenta); }
+
+/* Buttons */
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-pure);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid var(--border-bright);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-primary);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-pure);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Animation Container */
+.page-transition {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
