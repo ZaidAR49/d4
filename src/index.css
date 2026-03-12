@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --magenta: #ff00a0;
+  --cyan: #00ffff;
+  --grey-border: #3b4252;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Utilities */
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.box-glow {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.input-magenta {
+  border: 1px solid var(--magenta);
+  outline: none;
+}
+.input-magenta:focus {
+  box-shadow: 0 0 8px var(--magenta);
+}
+
+.btn-cyan {
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 255, 255, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+.btn-cyan:hover {
+  box-shadow: 0 0 10px var(--cyan);
+  background: rgba(0, 255, 255, 0.1);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
