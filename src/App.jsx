@@ -6,6 +6,8 @@ import Info from './pages/Info';
 import Gaming from './pages/Gaming';
 import Content from './pages/Content';
 import Partnerships from './pages/Partnerships';
+import MiniGames from './pages/MiniGames';
+import Shop from './pages/Shop';
 import './index.css';
 
 import Layout from './components/Layout';
@@ -21,6 +23,8 @@ function App() {
           <Route path="/gaming" element={<Gaming />} />
           <Route path="/content" element={<Content />} />
           <Route path="/partnerships" element={<Partnerships />} />
+          <Route path="/minigames" element={<MiniGames />} />
+          <Route path="/shop" element={<Shop />} />
         </Routes>
       </Layout>
     </Router>

@@ -20,6 +20,8 @@ const GlassNavbar = ({ username }) => {
     { name: 'GAMING', path: '/gaming', icon: Gamepad2 },
     { name: 'CONTENT', path: '/content', icon: PlaySquare },
     { name: 'PARTNERSHIPS', path: '/partnerships', icon: Users },
+    { name: 'MINI GAMES', path: '/minigames', icon: Joystick },
+    { name: 'SHOP', path: '/shop', icon: ShoppingBag },
   ];
 
   const secondaryLinks = [
@@ -38,7 +40,7 @@ const GlassNavbar = ({ username }) => {
     }}>
       <div className="glass-panel" style={{
         margin: '0 auto',
-        maxWidth: '1200px',
+        maxWidth: '1400px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -79,7 +81,7 @@ const GlassNavbar = ({ username }) => {
         </div>
 
         {/* Desktop Nav */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }} className="desktop-only">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }} className="desktop-only">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
