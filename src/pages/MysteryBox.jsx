@@ -56,8 +56,10 @@ export default function MysteryBox() {
   const settings = DIFFICULTY_SETTINGS[difficulty];
 
   useEffect(() => {
+    console.log('MysteryBox: Initializing with difficulty:', difficulty);
+    console.log('MysteryBox: Settings available:', !!settings);
     localStorage.setItem('d4_credits', balance.toString());
-  }, [balance]);
+  }, [balance, difficulty, settings]);
 
   const handleOpen = () => {
     if (balance < settings.cost || isOpening) return;
@@ -355,7 +357,9 @@ export default function MysteryBox() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '8px' }}>
                 <span style={{ color: 'var(--text-muted)' }}>Max Prize</span>
-                <span style={{ fontWeight: '700', color: '#10b981' }}>{settings.winRange.split('-')[1]} Credits</span>
+                <span style={{ fontWeight: '700', color: '#10b981' }}>
+                  {(settings?.winRange || '0-0').split('-')[1] || '0'} Credits
+                </span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '8px' }}>
                 <span style={{ color: 'var(--text-muted)' }}>Difficulty</span>

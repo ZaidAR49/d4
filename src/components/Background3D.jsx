@@ -7,7 +7,7 @@ function AnimatedSphere() {
   const meshRef = useRef();
   
   useFrame((state) => {
-    const time = state.clock.getElapsedTime();
+    const time = state.clock.elapsedTime;
     if (meshRef.current) {
       meshRef.current.rotation.x = time * 0.2;
       meshRef.current.rotation.y = time * 0.3;

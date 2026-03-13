@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
           zIndex: 1
         }}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 10 }}
