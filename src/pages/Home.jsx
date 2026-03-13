@@ -52,7 +52,7 @@ const MissionCard = ({ title, icon: Icon, children, delay = 0 }) => (
 
 export default function Home() {
   const location = useLocation();
-  const username = location.state?.username || 'GUEST';
+  const username = localStorage.getItem('d4_username') || 'GUEST';
 
   return (
     <div className="page-container" style={{ paddingBottom: '100px' }}>

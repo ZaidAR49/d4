@@ -191,8 +191,7 @@ export default function SpinTheWheel() {
 
   return (
     <div className="page-container" style={{ paddingBottom: '100px' }}>
-      {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+      <div className="game-header">
         <button 
           onClick={() => navigate('/minigames')}
           className="navbar-link"
@@ -225,23 +224,12 @@ export default function SpinTheWheel() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px', alignItems: 'start' }}>
+      <div className="game-layout">
         {/* Main Game Area */}
-        <div className="glass-panel" style={{ 
-          padding: '40px', 
-          minHeight: '650px', 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          gap: '40px', 
-          position: 'relative',
-          background: 'rgba(0,0,0,0.6)',
-          border: '1px solid rgba(212, 175, 55, 0.2)'
-        }}>
-          
+        <div className="game-main">
           <div style={{ textAlign: 'center' }}>
             <h3 style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: '800', marginBottom: '16px', letterSpacing: '0.2em' }}>SELECT DIFFICULTY</h3>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="difficulty-grid">
               {Object.entries(DIFFICULTY_SETTINGS).map(([key, cfg]) => (
                 <button
                   key={key}
@@ -263,6 +251,19 @@ export default function SpinTheWheel() {
               ))}
             </div>
           </div>
+
+          {/* Opening Area Style Wrapper */}
+          <div className="glass-panel" style={{ 
+            padding: '40px', 
+            minHeight: '650px', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            gap: '40px', 
+            position: 'relative',
+            background: 'rgba(0,0,0,0.6)',
+            border: '1px solid rgba(212, 175, 55, 0.2)'
+          }}>
 
           {/* The Wheel */}
           <div style={{ position: 'relative', width: 'clamp(280px, 80vw, 400px)', height: 'clamp(280px, 80vw, 400px)' }}>
@@ -369,8 +370,9 @@ export default function SpinTheWheel() {
             )}
           </AnimatePresence>
         </div>
+      </div>
 
-        {/* Info Side Area */}
+      {/* Info Side Area */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div className="glass-panel" style={{ padding: '24px', border: `1px solid ${settings.color}40`, background: 'rgba(0,0,0,0.4)' }}>
             <h4 style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1rem', fontWeight: '800', marginBottom: '20px', color: '#fbbf24' }}>

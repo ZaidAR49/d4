@@ -11,6 +11,8 @@ const GlassNavbar = ({ username }) => {
     // Clear any lounge session data if desired
     localStorage.removeItem('isD4LoungeActive');
     localStorage.removeItem('d4LoungeUsername');
+    // Clear main username
+    localStorage.removeItem('d4_username');
     // Reset Dev Mode and Credits
     localStorage.removeItem('d4_credits');
     localStorage.removeItem('d4_is_dev');
@@ -56,7 +58,7 @@ const GlassNavbar = ({ username }) => {
             width: '32px',
             height: '32px',
             borderRadius: '50%',
-            background: 'linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta))',
+            background: 'gray',
             padding: '1px'
           }}>
             <div style={{

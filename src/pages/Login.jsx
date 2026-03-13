@@ -14,7 +14,8 @@ export default function Login() {
       setIsLoading(true);
       // Artificial delay for that "scanning" feel
       await new Promise(resolve => setTimeout(resolve, 800));
-      navigate('/home', { state: { username } });
+      localStorage.setItem('d4_username', username);
+      navigate('/home');
     }
   };
 

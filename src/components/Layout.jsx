@@ -6,7 +6,7 @@ import Background3D from './Background3D';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const username = location.state?.username || 'GUEST';
+  const username = localStorage.getItem('d4_username') || 'GUEST';
   const isLoginPage = location.pathname === '/';
 
   return (

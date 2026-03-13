@@ -130,8 +130,7 @@ export default function MysteryBox() {
         )}
       </AnimatePresence>
 
-      {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+      <div className="game-header">
         <button 
           onClick={() => navigate('/minigames')}
           className="navbar-link"
@@ -152,7 +151,7 @@ export default function MysteryBox() {
         <h1 className="text-gradient" style={{ fontSize: 'clamp(1.5rem, 5vw, 3rem)', fontWeight: '900', textAlign: 'center' }}>
           MYSTERY BOX
         </h1>
-
+ 
         <div className="glass-panel" style={{ padding: '8px 20px', border: '2px solid #fbbf24' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
             <span style={{ fontSize: '10px', color: '#fbbf24', fontWeight: '800' }}>BALANCE</span>
@@ -164,13 +163,13 @@ export default function MysteryBox() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '32px', alignItems: 'start' }}>
+      <div className="game-layout">
         {/* Main Game Area */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <div className="game-main">
           {/* Difficulty Selection */}
           <div style={{ textAlign: 'center' }}>
             <h3 style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: '800', marginBottom: '16px', letterSpacing: '0.2em' }}>SELECT DIFFICULTY</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+            <div className="difficulty-grid">
               {Object.entries(DIFFICULTY_SETTINGS).map(([key, cfg]) => (
                 <button
                   key={key}

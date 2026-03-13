@@ -11,7 +11,7 @@ const AGE_QUESTIONS = [
 
 export default function Content() {
   const location = useLocation();
-  const username = location.state?.username || 'Guest';
+  const username = localStorage.getItem('d4_username') || 'Guest';
   
   const [isLoungeActive, setIsLoungeActive] = useState(() => localStorage.getItem('isD4LoungeActive') === 'true');
   const [modalPhase, setModalPhase] = useState('none');

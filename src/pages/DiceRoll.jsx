@@ -235,8 +235,7 @@ export default function DiceRoll() {
         )}
       </AnimatePresence>
 
-      {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', position: 'relative', zIndex: 1 }}>
+      <div className="game-header">
         <button 
           onClick={() => navigate('/minigames')}
           className="navbar-link"
@@ -254,7 +253,7 @@ export default function DiceRoll() {
           <ChevronLeft size={20} /> BACK
         </button>
         
-        <h1 className="text-gradient" style={{ fontSize: 'clamp(2rem, 6vw, 5rem)', fontWeight: '900', textAlign: 'center', color: '#ef4444', letterSpacing: '-0.02em' }}>
+        <h1 className="text-gradient" style={{ fontSize: 'clamp(1.5rem, 5vw, 3rem)', fontWeight: '900', textAlign: 'center', color: '#ef4444', letterSpacing: '-0.02em' }}>
           DICE ROLL
         </h1>
 
@@ -263,18 +262,18 @@ export default function DiceRoll() {
             <span style={{ fontSize: '10px', color: '#fbbf24', fontWeight: '800', letterSpacing: '0.1em' }}>BALANCE</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Coins size={18} color="#fbbf24" />
-              <span style={{ fontSize: '24px', fontWeight: '900', fontFamily: 'Space Grotesk' }}>{balance.toLocaleString()}</span>
+              <span style={{ fontSize: '20px', fontWeight: '900', fontFamily: 'Space Grotesk' }}>{balance.toLocaleString()}</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '32px', position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div className="game-layout">
+        <div className="game-main">
           {/* Difficulty */}
           <div style={{ textAlign: 'center' }}>
-            <h3 style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: '800', marginBottom: '16px', letterSpacing: '0.2em' }}>SELECT DIFFICULTY</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+            <h3 style={{ color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: '800', marginBottom: '16px', letterSpacing: '0.2em' }}>SELECT DIFFICULTY</h3>
+            <div className="difficulty-grid">
               {Object.entries(DIFFICULTY_SETTINGS).map(([key, cfg]) => (
                 <motion.button
                   key={key}
