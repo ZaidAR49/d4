@@ -187,6 +187,11 @@ export default function MiniGames() {
       return;
     }
 
+    if (gameName === 'DICE ROLL') {
+      navigate('/minigames/dice');
+      return;
+    }
+
     setBalance(prev => prev - bet);
     
     // Simulate delay for excitement

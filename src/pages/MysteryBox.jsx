@@ -66,14 +66,17 @@ export default function MysteryBox() {
     setIsOpening(true);
     setResult(null);
 
-    // Simulate opening with tiers
+    // Precise multi-stage timing
+    // Stage 1: Pulse/Suspense (0-1s)
+    // Stage 2: Intense Shake (1s-2.5s)
+    // Stage 3: Burst/Reveal (2.5s)
+    
     setTimeout(() => {
       const rand = Math.random() * 100;
       let winningPrize = 0;
       let tierLabel = 'NOTHING';
       
       const rates = settings.rates;
-      // Simple logic to match the rates for simulation
       if (rand < parseFloat(rates[0].rate)) {
         winningPrize = 0;
         tierLabel = 'NOTHING';
@@ -98,11 +101,33 @@ export default function MysteryBox() {
         { id: Date.now(), amount: winningPrize, label: tierLabel, difficulty: settings.label },
         ...prev.slice(0, 4)
       ]);
-    }, 1500);
+    }, 2500);
   };
 
   return (
     <div className="page-container" style={{ paddingBottom: '100px' }}>
+      {/* Radial Glow Background Effect while opening */}
+      <AnimatePresence>
+        {isOpening && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.4, 0.2, 0.6] }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2.5, times: [0, 0.4, 0.8, 1] }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: `radial-gradient(circle at center, ${settings.color}40 0%, transparent 70%)`,
+              pointerEvents: 'none',
+              zIndex: 0
+            }}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
         <button 
@@ -202,22 +227,50 @@ export default function MysteryBox() {
           }}>
             <motion.div
               animate={isOpening ? { 
-                scale: [1, 1.1, 1],
-                rotate: [0, -5, 5, -5, 5, 0],
+                scale: [1, 1.05, 1, 1.2, 0.9, 1.5],
+                rotate: [0, -1, 1, -2, 2, -10, 10, -20, 20, 0],
+                filter: [
+                  `drop-shadow(0 0 20px ${settings.color}40)`,
+                  `drop-shadow(0 0 40px ${settings.color}60)`,
+                  `drop-shadow(0 0 80px ${settings.color}80)`,
+                  `drop-shadow(0 0 120px ${settings.color})`,
+                ]
               } : { 
-                y: [0, -10, 0] 
+                y: [0, -10, 0],
+                filter: `drop-shadow(0 0 20px ${settings.color}40)`
               }}
               transition={isOpening ? { 
-                duration: 0.5, 
-                repeat: Infinity 
+                duration: 2.5,
+                times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+                ease: "easeInOut"
               } : { 
                 duration: 2, 
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              style={{ color: settings.color }}
+              style={{ color: settings.color, position: 'relative', zIndex: 1 }}
             >
-              <Package size={150} style={{ filter: `drop-shadow(0 0 20px ${settings.color}40)` }} />
+              <Package size={150} />
+              
+              {/* Particle Burst Effect */}
+              {isOpening && (
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: [0, 2], opacity: [0, 1, 0] }}
+                  transition={{ delay: 2, duration: 0.5 }}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    width: '100px',
+                    height: '100px',
+                    borderRadius: '50%',
+                    background: `radial-gradient(circle, ${settings.color} 0%, transparent 70%)`,
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: -1
+                  }}
+                />
+              )}
             </motion.div>
 
             <AnimatePresence mode="wait">
