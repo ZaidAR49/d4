@@ -343,9 +343,15 @@ export default function MysteryBox() {
               <Info size={18} /> GAME INFO
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '8px' }}>
-                <span style={{ color: 'var(--text-muted)' }}>Cost Per Box</span>
-                <span style={{ fontWeight: '700' }}>{settings.cost} Credits</span>
+              <div style={{ padding: '12px', background: 'rgba(255,255,255,0.02)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '8px' }}>
+                <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: '800', display: 'block', marginBottom: '4px' }}>CONCEPT</span>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4', margin: 0 }}>
+                  Open premium boxes for a chance to win massive rewards. Each difficulty tier offers different win ranges and drop rates.
+                </p>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Cost Per Box</span>
+                <span style={{ fontWeight: '800' }}>{settings.cost} Credits</span>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '8px' }}>
                 <span style={{ color: 'var(--text-muted)' }}>Max Prize</span>
