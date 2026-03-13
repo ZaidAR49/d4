@@ -27,7 +27,7 @@ const MissionCard = ({ title, icon: Icon, children, delay = 0 }) => (
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'var(--accent-cyan)'
+      color: 'var(--text-primary)'
     }}>
       <Icon size={24} />
     </div>
@@ -71,9 +71,9 @@ export default function Home() {
           style={{
             padding: '8px 16px',
             borderRadius: '100px',
-            background: 'rgba(0, 245, 255, 0.1)',
-            border: '1px solid rgba(0, 245, 255, 0.2)',
-            color: 'var(--accent-cyan)',
+            background: 'rgba(255, 255, 255, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'var(--text-primary)',
             fontSize: '12px',
             fontWeight: '600',
             letterSpacing: '0.1em',
@@ -170,11 +170,11 @@ export default function Home() {
           gap: '30px',
           border: '1px solid var(--border-bright)',
           cursor: 'pointer',
-          background: 'linear-gradient(90deg, rgba(255,0,229,0.05) 0%, rgba(0,245,255,0.05) 100%)'
+          background: 'rgba(255, 255, 255, 0.03)'
         }}
       >
         <div style={{ flex: '1', minWidth: '300px' }}>
-          <h2 style={{ color: 'var(--accent-cyan)', fontSize: '1.8rem', fontWeight: '800', marginBottom: '12px' }}>
+          <h2 style={{ color: 'var(--text-primary)', fontSize: '1.8rem', fontWeight: '800', marginBottom: '12px' }}>
             READY TO JOIN THE DIMENSION?
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>

@@ -153,7 +153,7 @@ export default function Shop() {
       duration: 'Permanent',
       price: 750,
       icon: BadgeCheck,
-      borderColor: 'var(--accent-indigo)'
+      borderColor: 'var(--text-primary)'
     },
     {
       id: 'credit-multiplier',
@@ -193,7 +193,7 @@ export default function Shop() {
       duration: 'Instant',
       price: 600,
       icon: Zap,
-      borderColor: '#fbbf24'
+      borderColor: 'var(--text-secondary)'
     },
     {
       id: 'sticker-pack',
@@ -248,7 +248,7 @@ export default function Shop() {
       price: 10000,
       stock: 5,
       icon: Monitor,
-      borderColor: '#10b981'
+      borderColor: '#a1a1aa'
     },
     {
       id: 'neon-border',
@@ -298,7 +298,7 @@ export default function Shop() {
       duration: 'Permanent',
       price: 3500,
       icon: Trophy,
-      borderColor: '#ff00e5'
+      borderColor: '#ffffff'
     },
   ];
 
@@ -356,10 +356,10 @@ export default function Shop() {
         </div>
       </div>
 
-      <div className="glass-panel" style={{ padding: '32px', marginBottom: '40px', border: '2px solid #fbbf24', background: 'rgba(251, 191, 36, 0.05)' }}>
+      <div className="glass-panel" style={{ padding: '32px', marginBottom: '40px', border: '2px solid var(--text-primary)', background: 'rgba(255, 255, 255, 0.05)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '12px' }}>
-          <ShoppingCart color="#fbbf24" size={24} />
-          <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#fbbf24', fontFamily: 'Space Grotesk' }}>SPEND YOUR CREDITS</h2>
+          <ShoppingCart color="var(--text-primary)" size={24} />
+          <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--text-primary)', fontFamily: 'Space Grotesk' }}>SPEND YOUR CREDITS</h2>
         </div>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '8px', fontSize: '1rem' }}>
           Purchase perks, boosts, exclusive real-life items, and cosmetics to enhance your D4 experience!
@@ -414,8 +414,8 @@ export default function Shop() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
-        <div className="glass-panel" style={{ padding: '32px', border: '1px solid var(--accent-magenta)' }}>
-          <h3 style={{ color: 'var(--accent-magenta)', fontSize: '1.25rem', fontWeight: '800', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="glass-panel" style={{ padding: '32px', border: '1px solid var(--text-secondary)' }}>
+          <h3 style={{ color: 'var(--text-primary)', fontSize: '1.25rem', fontWeight: '800', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Sparkles size={20} /> PRO TIP
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
@@ -423,8 +423,8 @@ export default function Shop() {
           </p>
         </div>
         
-        <div className="glass-panel" style={{ padding: '32px', border: '1px solid #10b981' }}>
-          <h3 style={{ color: '#10b981', fontSize: '1.25rem', fontWeight: '800', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="glass-panel" style={{ padding: '32px', border: '1px solid var(--text-secondary)' }}>
+          <h3 style={{ color: 'var(--text-primary)', fontSize: '1.25rem', fontWeight: '800', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Gift size={20} /> REAL-LIFE ITEMS
           </h3>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>

@@ -216,8 +216,8 @@ export default function MiniGames() {
       title: 'SPIN THE WHEEL',
       icon: Sparkles,
       description: 'Spin for credits! Higher bets = bigger prizes',
-      borderColor: 'var(--accent-indigo)',
-      glowColor: 'var(--accent-indigo)',
+      borderColor: 'var(--text-primary)',
+      glowColor: 'var(--text-primary)',
       rewards: [
         { difficulty: 'Easy', bet: 25, win: '30-50' },
         { difficulty: 'Medium', bet: 50, win: '75-100' },
@@ -229,8 +229,8 @@ export default function MiniGames() {
       title: 'DICE ROLL',
       icon: Dices,
       description: 'Roll the dice & match the target number',
-      borderColor: 'var(--accent-magenta)',
-      glowColor: 'var(--accent-magenta)',
+      borderColor: 'var(--text-secondary)',
+      glowColor: 'var(--text-secondary)',
       rewards: [
         { difficulty: 'Easy', bet: 25, win: '25-40' },
         { difficulty: 'Medium', bet: 50, win: '75-100' },
@@ -242,8 +242,8 @@ export default function MiniGames() {
       title: 'MYSTERY BOX',
       icon: Package,
       description: 'Choose a mystery box for random rewards!',
-      borderColor: '#fbbf24',
-      glowColor: '#fbbf24',
+      borderColor: 'var(--text-muted)',
+      glowColor: 'var(--text-muted)',
       rewards: [
         { difficulty: 'Easy', bet: 20, win: '10-50' },
         { difficulty: 'Medium', bet: 40, win: '20-120' },
@@ -465,27 +465,27 @@ export default function MiniGames() {
         justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: '24px',
-        background: canClaim ? 'linear-gradient(90deg, rgba(251, 191, 36, 0.1) 0%, rgba(10,10,10,0.8) 100%)' :
-                              'linear-gradient(90deg, rgba(255,0,229,0.05) 0%, rgba(10,10,10,0.8) 100%)',
-        border: canClaim ? '1px solid #fbbf24' : '1px solid rgba(255,0,229,0.2)'
+        background: canClaim ? 'linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(10,10,10,0.8) 100%)' :
+                              'linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, rgba(10,10,10,0.8) 100%)',
+        border: canClaim ? '1px solid var(--text-primary)' : '1px solid rgba(255,255,255,0.2)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <div style={{ 
             width: '56px', 
             height: '56px', 
             borderRadius: '50%', 
-            background: canClaim ? '#fbbf24' : 'var(--accent-magenta)', 
+            background: canClaim ? 'var(--text-primary)' : 'var(--text-secondary)', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
-            boxShadow: canClaim ? '0 0 20px rgba(251, 191, 36, 0.4)' : '0 0 20px rgba(255,0,229,0.4)'
+            boxShadow: canClaim ? '0 0 20px rgba(255, 255, 255, 0.4)' : '0 0 20px rgba(255,255,255,0.1)'
           }}>
             <Clock size={28} color={canClaim ? 'black' : 'white'} />
           </div>
           <div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: '800', fontFamily: 'Space Grotesk' }}>DAILY BONUS</h3>
             <p style={{ 
-              color: canClaim ? '#fbbf24' : 'var(--accent-magenta)', 
+              color: canClaim ? 'var(--text-primary)' : 'var(--text-secondary)', 
               fontSize: '0.9rem', 
               fontWeight: '600' 
             }}>
@@ -517,13 +517,13 @@ export default function MiniGames() {
         boxShadow: '0 0 30px rgba(99, 102, 241, 0.1)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-          <Sparkles size={24} color="var(--accent-indigo)" />
+          <Sparkles size={24} color="var(--text-primary)" />
           <h2 style={{ fontSize: '1.5rem', fontWeight: '800', fontFamily: 'Space Grotesk' }}>WELCOME TO MINI GAMES!</h2>
         </div>
         <p style={{ color: 'var(--text-secondary)', marginBottom: '16px', fontSize: '1.1rem' }}>
           Test your luck and skills with our collection of fun mini-games!
         </p>
-        <p style={{ color: 'var(--accent-indigo)', fontWeight: '600', marginBottom: '12px' }}>
+        <p style={{ color: 'var(--text-primary)', fontWeight: '600', marginBottom: '12px' }}>
           Earn credits through games and challenges, or claim your daily bonus every 24 hours.
         </p>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', color: '#fbbf24', fontWeight: '700' }}>
@@ -535,7 +535,7 @@ export default function MiniGames() {
       {/* Credit Games Section */}
       <div style={{ marginBottom: '80px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px' }}>
-          <Coins size={28} color="#fbbf24" />
+          <Coins size={28} color="var(--text-primary)" />
           <h2 style={{ fontSize: '2rem', fontWeight: '800', fontFamily: 'Space Grotesk' }}>CREDIT GAMES</h2>
         </div>
         
@@ -559,8 +559,8 @@ export default function MiniGames() {
         
         <div className="glass-panel" style={{ 
           padding: '40px',
-          background: 'linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, rgba(255,0,229,0.1) 100%)',
-          border: '1px solid var(--accent-indigo)',
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid var(--border-subtle)',
           display: 'flex',
           gap: '32px',
           flexWrap: 'wrap',
@@ -597,9 +597,9 @@ export default function MiniGames() {
                   <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent-cyan)' }} />600+ white cards</li>
                 </ul>
                 <ul style={{ listStyle: 'none', color: 'var(--text-secondary)', fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent-magenta)' }} />Create/join lobbies</li>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent-magenta)' }} />Play with bots or friends</li>
-                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent-magenta)' }} />Cost: 10 credits per game</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--text-primary)' }} />Create/join lobbies</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--text-primary)' }} />Play with bots or friends</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--text-primary)' }} />Cost: 10 credits per game</li>
                 </ul>
               </div>
               

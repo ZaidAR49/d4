@@ -131,7 +131,7 @@ const GlassNavbar = ({ username }) => {
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                color: 'var(--accent-magenta)',
+                color: 'var(--text-primary)',
                 transition: 'all 0.2s ease'
               }}
               title="SIGN OUT"
@@ -238,9 +238,9 @@ const GlassNavbar = ({ username }) => {
                   fontSize: '14px',
                   fontFamily: 'Space Grotesk',
                   fontWeight: '700',
-                  color: 'var(--accent-magenta)',
-                  background: 'rgba(255, 0, 229, 0.05)',
-                  border: '1px solid rgba(255, 0, 229, 0.1)',
+                  color: 'var(--text-primary)',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
                   cursor: 'pointer',
                   justifyContent: 'center',
                   marginTop: '4px'

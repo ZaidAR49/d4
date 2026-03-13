@@ -102,7 +102,7 @@ export default function Content() {
               ) : (
                 <>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                    <HelpCircle className="text-cyan" size={24} />
+                    <HelpCircle color="var(--text-primary)" size={24} />
                     <h2 style={{ fontSize: '1.5rem', fontWeight: '800' }}>RESTRICTION CHECK</h2>
                   </div>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '20px' }}>VERIFICATION {currentQuestionIndex + 1} / 3</p>
@@ -112,7 +112,7 @@ export default function Content() {
                       <button key={i} onClick={() => setSelectedOption(i)} className={selectedOption === i ? "btn-primary" : "btn-outline"} style={{ textAlign: 'left', padding: '12px 20px' }}>{opt}</button>
                     ))}
                   </div>
-                  {isError && <p style={{ color: 'var(--accent-magenta)', fontSize: '0.8rem', marginBottom: '10px' }}>Security rejection. Incorrect response.</p>}
+                  {isError && <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginBottom: '10px' }}>Security rejection. Incorrect response.</p>}
                   <button onClick={handleNextQuestion} className="btn-primary" style={{ width: '100%' }}>SUBMIT RESPONSE</button>
                 </>
               )}
@@ -123,7 +123,7 @@ export default function Content() {
 
       {!isLoungeActive ? (
         <div style={{ textAlign: 'center', maxWidth: '800px', margin: '60px auto' }}>
-          <Cigarette size={60} style={{ marginBottom: '30px', color: 'var(--accent-cyan)' }} />
+          <Cigarette size={60} style={{ marginBottom: '30px', color: 'var(--text-primary)' }} />
           <h1 className="text-gradient" style={{ fontSize: '4rem', fontWeight: '900', marginBottom: '20px' }}>CONTENT LOUNGE</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '50px' }}>The restricted 21+ sanctuary for the D4 family. Vibe, share, and connect.</p>
           <div className="glass-panel" style={{ padding: '60px 40px', border: '1px solid var(--border-bright)' }}>
@@ -139,7 +139,7 @@ export default function Content() {
               <h1 className="text-gradient" style={{ fontSize: '4rem', fontWeight: '900', marginBottom: '20px' }}>CONTENT LOUNGE</h1>
               <p style={{ color: 'var(--text-secondary)' }}>Secure session active: {loungeName || username}</p>
             </div>
-            <Unlock className="text-cyan" size={32} />
+            <Unlock color="var(--text-primary)" size={32} />
           </header>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(250px, 1fr) 2fr', gap: '30px' }}>
@@ -186,7 +186,7 @@ export default function Content() {
 
             <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', border: '1px solid var(--border-bright)', minHeight: '600px' }}>
               <div style={{ padding: '20px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <MessageSquare className="text-cyan" size={18} />
+                <MessageSquare color="var(--text-primary)" size={18} />
                 <span style={{ fontSize: '0.9rem', fontWeight: '700' }}>LIVE HUB</span>
               </div>
               
@@ -198,7 +198,7 @@ export default function Content() {
                       <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{m.time}</span>
                     </div>
                     {m.type === 'text' && (
-                       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', background: 'rgba(255,255,255,0.02)', padding: '12px', borderRadius: '0 12px 12px 12px', borderLeft: '2px solid var(--accent-cyan)', maxWidth: '80%' }}>{m.text}</p>
+                       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', background: 'rgba(255,255,255,0.02)', padding: '12px', borderRadius: '0 12px 12px 12px', borderLeft: '2px solid var(--border-bright)', maxWidth: '80%' }}>{m.text}</p>
                     )}
                     {m.type === 'image' && (
                       <div style={{ maxWidth: '80%', overflow: 'hidden', borderRadius: '12px', border: '1px solid var(--border-bright)' }}>

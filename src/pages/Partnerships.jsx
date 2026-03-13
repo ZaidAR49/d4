@@ -34,7 +34,7 @@ const PartnerSlot = ({ number, delay = 0 }) => (
       <Handshake size={32} />
     </div>
     <div style={{ textAlign: 'center' }}>
-      <h3 style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--accent-cyan)', letterSpacing: '0.1em', marginBottom: '8px' }}>SLOT {number}</h3>
+      <h3 style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-primary)', letterSpacing: '0.1em', marginBottom: '8px' }}>SLOT {number}</h3>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', fontWeight: '600' }}>RESERVED FOR FUTURE PARTNER</p>
     </div>
   </motion.div>
@@ -49,7 +49,7 @@ const FeatureCard = ({ icon: Icon, title, desc, delay = 0 }) => (
     style={{ flex: 1, minWidth: '280px' }}
   >
     <div className="glass-panel" style={{ padding: '30px', borderRadius: '20px', height: '100%' }}>
-      <div style={{ color: 'var(--accent-magenta)', marginBottom: '16px' }}><Icon size={24} /></div>
+      <div style={{ color: 'var(--text-primary)', marginBottom: '16px' }}><Icon size={24} /></div>
       <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '10px', fontFamily: 'Space Grotesk' }}>{title}</h3>
       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>{desc}</p>
     </div>
@@ -101,14 +101,14 @@ export default function Partnerships() {
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '40px',
-          background: 'linear-gradient(135deg, rgba(99,102,241,0.05) 0%, rgba(255,0,229,0.05) 100%)',
+          background: 'rgba(255, 255, 255, 0.02)',
           border: '1px solid var(--border-bright)',
           marginBottom: '80px'
         }}
       >
         <div style={{ flex: 2, minWidth: '320px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-            <Zap className="text-magenta" size={28} />
+            <Zap color="var(--text-primary)" size={28} />
             <h2 style={{ fontSize: '2rem', fontWeight: '800' }}>BECOME A PARTNER</h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.6' }}>

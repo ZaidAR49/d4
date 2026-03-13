@@ -16,7 +16,7 @@ const InfoSection = ({ icon: Icon, title, content, delay = 0 }) => (
         borderRadius: '12px',
         background: 'rgba(255,255,255,0.03)',
         border: '1px solid var(--border-subtle)',
-        color: 'var(--accent-cyan)'
+        color: 'var(--text-primary)'
       }}>
         <Icon size={24} />
       </div>
@@ -57,7 +57,7 @@ const ValueBox = ({ title, items, delay = 0 }) => (
     }}
   >
     <h4 style={{ 
-      color: 'var(--accent-magenta)', 
+      color: 'var(--text-primary)', 
       fontWeight: '800', 
       fontSize: '0.8rem', 
       letterSpacing: '0.1em',
@@ -69,7 +69,7 @@ const ValueBox = ({ title, items, delay = 0 }) => (
     <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
       {items.map((item, i) => (
         <li key={i} style={{ display: 'flex', gap: '10px', color: 'white', fontSize: '0.9rem' }}>
-          <span style={{ color: 'var(--accent-cyan)' }}>•</span>
+          <span style={{ color: 'var(--text-secondary)' }}>•</span>
           {item}
         </li>
       ))}

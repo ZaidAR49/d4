@@ -5,9 +5,9 @@
   --bg-elevated: #0a0a0a;
   
   /* Accent Colors */
-  --accent-cyan: #00f5ff;
-  --accent-magenta: #ff00e5;
-  --accent-indigo: #6366f1;
+  --accent-cyan: #ffffff;
+  --accent-magenta: #71717a;
+  --accent-indigo: #a1a1aa;
   
   /* Text */
   --text-primary: #ffffff;
@@ -21,8 +21,8 @@
   --glass-blur: blur(12px);
   
   /* Shadows */
-  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
-  --glow-magenta: 0 0 20px rgba(255, 0, 229, 0.3);
+  --glow-cyan: 0 0 20px rgba(255, 255, 255, 0.3);
+  --glow-magenta: 0 0 20px rgba(161, 161, 170, 0.3);
 }
 
 * {

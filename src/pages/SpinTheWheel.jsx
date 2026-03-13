@@ -7,23 +7,23 @@ const DIFFICULTY_SETTINGS = {
   EASY: {
     cost: 25,
     prizes: [50, 0, 40, 0, 30, 0, 45, 0, 35, 0, 0, 0],
-    color: '#10b981',
+    color: '#ffffff',
     label: 'EASY',
-    gradient: 'linear-gradient(135deg, #059669 0%, #10b981 100%)'
+    gradient: 'linear-gradient(135deg, #a1a1aa 0%, #ffffff 100%)'
   },
   MEDIUM: {
     cost: 50,
     prizes: [100, 0, 75, 0, 85, 0, 95, 0, 90, 0, 80, 0],
-    color: '#fbbf24',
+    color: '#a1a1aa',
     label: 'MEDIUM',
-    gradient: 'linear-gradient(135deg, #d97706 0%, #fbbf24 100%)'
+    gradient: 'linear-gradient(135deg, #52525b 0%, #a1a1aa 100%)'
   },
   HARD: {
     cost: 100,
     prizes: [150, 0, 125, 0, 135, 0, 145, 0, 140, 0, 130, 0],
-    color: '#a855f7',
+    color: '#52525b',
     label: 'HARD',
-    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)'
+    gradient: 'linear-gradient(135deg, #27272a 0%, #52525b 100%)'
   }
 };
 
@@ -42,10 +42,10 @@ const WheelSVG = ({ prizes, difficultyColor, rotation }) => {
       style={{ rotate: rotation, filter: 'drop-shadow(0 0 30px rgba(212, 175, 55, 0.2))' }}
     >
       {/* Outer Glow Ring */}
-      <circle cx={center} cy={center} r={center - 2} fill="none" stroke="#d4af37" strokeWidth="8" strokeOpacity="0.2" />
+      <circle cx={center} cy={center} r={center - 2} fill="none" stroke="#52525b" strokeWidth="8" strokeOpacity="0.2" />
       
-      {/* Main Outer Border (Gold) */}
-      <circle cx={center} cy={center} r={center - 4} fill="#1a1a1a" stroke="#d4af37" strokeWidth="4" />
+      {/* Main Outer Border */}
+      <circle cx={center} cy={center} r={center - 4} fill="#1a1a1a" stroke="#ffffff" strokeWidth="4" />
       
       {/* Slices */}
       {prizes.map((prize, i) => {
@@ -63,8 +63,8 @@ const WheelSVG = ({ prizes, difficultyColor, rotation }) => {
           <g key={i}>
             <path
               d={pathData}
-              fill={i % 2 === 0 ? (prize > 0 ? '#600' : '#400') : (prize > 0 ? '#b00' : '#800')} 
-              stroke="#d4af37" 
+              fill={i % 2 === 0 ? (prize > 0 ? '#27272a' : '#18181b') : (prize > 0 ? '#3f3f46' : '#27272a')} 
+              stroke="#52525b" 
               strokeWidth="1.5"
               strokeOpacity="0.5"
             />
@@ -72,7 +72,7 @@ const WheelSVG = ({ prizes, difficultyColor, rotation }) => {
             <text
               x={center}
               y={center - radius * 0.78}
-              fill={prize > 0 ? '#FFD700' : '#ffffff'}
+              fill={prize > 0 ? '#ffffff' : '#71717a'}
               fontSize="18"
               fontWeight="900"
               textAnchor="middle"
@@ -91,15 +91,15 @@ const WheelSVG = ({ prizes, difficultyColor, rotation }) => {
                 cx={center + radius * Math.cos((Math.PI * (startAngle - 90)) / 180)}
                 cy={center + radius * Math.sin((Math.PI * (startAngle - 90)) / 180)}
                 r="3"
-                fill="#d4af37"
+                fill="#ffffff"
             />
           </g>
         );
       })}
 
       {/* Decorative Hub */}
-      <circle cx={center} cy={center} r="35" fill="#111" stroke="#d4af37" strokeWidth="2" />
-      <circle cx={center} cy={center} r="30" fill="url(#hubGradient)" stroke="#d4af37" strokeWidth="1" />
+      <circle cx={center} cy={center} r="35" fill="#111" stroke="#ffffff" strokeWidth="2" />
+      <circle cx={center} cy={center} r="30" fill="url(#hubGradient)" stroke="#52525b" strokeWidth="1" />
       <defs>
         <radialGradient id="hubGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
           <stop offset="0%" stopColor="#d4af37" stopOpacity="0.4" />
@@ -300,10 +300,10 @@ export default function SpinTheWheel() {
               padding: '20px 80px',
               fontSize: '1.5rem',
               fontWeight: '900',
-              background: 'linear-gradient(45deg, #d4af37, #FFD700)',
+              background: 'linear-gradient(45deg, #a1a1aa, #ffffff)',
               color: 'black',
               border: 'none',
-              boxShadow: '0 0 30px rgba(212, 175, 55, 0.3)',
+              boxShadow: '0 0 30px rgba(255, 255, 255, 0.3)',
               cursor: (isSpinning || balance < settings.cost) ? 'not-allowed' : 'pointer',
               opacity: (isSpinning || balance < settings.cost) ? 0.5 : 1,
               fontFamily: 'Space Grotesk'

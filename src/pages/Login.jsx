@@ -49,7 +49,7 @@ export default function Login() {
             width: '80px',
             height: '80px',
             margin: '0 auto 24px',
-            background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta))',
+            background: 'linear-gradient(135deg, #ffffff, #52525b)',
             borderRadius: '24px',
             padding: '2px'
           }}>
@@ -150,9 +150,9 @@ export default function Login() {
 
       <style>{`
         .login-input:focus {
-          border-color: var(--accent-cyan);
+          border-color: var(--text-primary);
           background: rgba(255, 255, 255, 0.05);
-          box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
         .shimmer {
           background: linear-gradient(90deg, #fff3, #fff, #fff3);
