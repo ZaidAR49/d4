@@ -8,6 +8,8 @@ import Content from './pages/Content';
 import Partnerships from './pages/Partnerships';
 import MiniGames from './pages/MiniGames';
 import Shop from './pages/Shop';
+import SpinTheWheel from './pages/SpinTheWheel';
+import MysteryBox from './pages/MysteryBox';
 import './index.css';
 
 import Layout from './components/Layout';
@@ -25,6 +27,8 @@ function App() {
           <Route path="/partnerships" element={<Partnerships />} />
           <Route path="/minigames" element={<MiniGames />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/minigames/spin" element={<SpinTheWheel />} />
+          <Route path="/minigames/box" element={<MysteryBox />} />
         </Routes>
       </Layout>
     </Router>

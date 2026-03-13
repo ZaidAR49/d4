@@ -11,6 +11,9 @@ const GlassNavbar = ({ username }) => {
     // Clear any lounge session data if desired
     localStorage.removeItem('isD4LoungeActive');
     localStorage.removeItem('d4LoungeUsername');
+    // Reset Dev Mode and Credits
+    localStorage.removeItem('d4_credits');
+    localStorage.removeItem('d4_is_dev');
     navigate('/');
   };
 

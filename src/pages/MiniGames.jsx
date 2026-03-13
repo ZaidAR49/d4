@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Coins, Trophy, Sparkles, Dices, Package, Check, Clock, Lock, Play } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const GameCard = ({ title, icon: Icon, description, rewards, borderColor, glowColor, onPlay, delay = 0 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay, duration: 0.5 }}
+    whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    onClick={() => onPlay(rewards[1].bet, rewards[1].win, title)}
     className="glass-card"
     style={{
       padding: '32px',
@@ -16,7 +19,8 @@ const GameCard = ({ title, icon: Icon, description, rewards, borderColor, glowCo
       flexDirection: 'column',
       gap: '24px',
       border: `1px solid ${borderColor}`,
-      boxShadow: `0 0 30px ${glowColor}15`
+      boxShadow: `0 0 30px ${glowColor}15`,
+      cursor: 'pointer'
     }}
   >
     <div style={{
@@ -53,7 +57,10 @@ const GameCard = ({ title, icon: Icon, description, rewards, borderColor, glowCo
         {rewards.map((reward, index) => (
           <button
             key={index}
-            onClick={() => onPlay(reward.bet, reward.win, title)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onPlay(reward.bet, reward.win, title);
+            }}
             className="navbar-link"
             style={{ 
               fontSize: '0.85rem', 
@@ -86,6 +93,7 @@ const GameCard = ({ title, icon: Icon, description, rewards, borderColor, glowCo
 );
 
 export default function MiniGames() {
+  const navigate = useNavigate();
   const [balance, setBalance] = useState(() => {
     const saved = localStorage.getItem('d4_credits');
     return saved ? parseInt(saved) : 200;
@@ -96,6 +104,12 @@ export default function MiniGames() {
   const [timeLeft, setTimeLeft] = useState('');
   const [canClaim, setCanClaim] = useState(false);
   const [feedback, setFeedback] = useState(null);
+  const [showDevModal, setShowDevModal] = useState(false);
+  const [devPassword, setDevPassword] = useState('');
+  const [isDev, setIsDev] = useState(() => {
+    return localStorage.getItem('d4_is_dev') === 'true';
+  });
+  const [modalError, setModalError] = useState('');
 
   useEffect(() => {
     localStorage.setItem('d4_credits', balance.toString());
@@ -141,9 +155,35 @@ export default function MiniGames() {
     showFeedback('+100 CREDITS COLLECTED!');
   };
 
+  const handleDevAuth = (e) => {
+    e.preventDefault();
+    if (devPassword === 'zaidopen') {
+      setBalance(99999999);
+      setIsDev(true);
+      localStorage.setItem('d4_is_dev', 'true');
+      setShowDevModal(false);
+      setDevPassword('');
+      setModalError('');
+      showFeedback('DEV MODE ACTIVATED: INFINITE TOKENS GRANTED!', 'info');
+    } else {
+      setModalError('ACCESS DENIED: INVALID MASTER PASSWORD');
+      setTimeout(() => setModalError(''), 3000);
+    }
+  };
+
   const handlePlay = (bet, winRange, gameName) => {
     if (balance < bet) {
       showFeedback('NOT ENOUGH CREDITS!', 'error');
+      return;
+    }
+
+    if (gameName === 'SPIN THE WHEEL') {
+      navigate('/minigames/spin');
+      return;
+    }
+
+    if (gameName === 'MYSTERY BOX') {
+      navigate('/minigames/box');
       return;
     }
 
@@ -238,6 +278,131 @@ export default function MiniGames() {
         )}
       </AnimatePresence>
 
+      {/* Dev Auth Modal */}
+      <AnimatePresence>
+        {showDevModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0,0,0,0.85)',
+              zIndex: 3000,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '20px',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              className="glass-panel"
+              style={{
+                width: '100%',
+                maxWidth: '450px',
+                padding: '40px',
+                border: '2px solid #10b981',
+                boxShadow: '0 0 50px rgba(16, 185, 129, 0.2)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                <Lock size={24} color="#10b981" />
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '900', color: '#10b981', fontFamily: 'Space Grotesk', letterSpacing: '0.05em' }}>
+                  DEV AUTHENTICATION
+                </h2>
+              </div>
+              
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', fontSize: '0.95rem' }}>
+                Enter the master password to activate DEV mode
+              </p>
+
+              {modalError && (
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  style={{
+                    padding: '12px',
+                    borderRadius: '8px',
+                    background: 'rgba(220, 38, 38, 0.1)',
+                    border: '1px solid #dc2626',
+                    color: '#dc2626',
+                    fontSize: '0.85rem',
+                    fontWeight: '700',
+                    marginBottom: '24px',
+                    textAlign: 'center'
+                  }}
+                >
+                  {modalError}
+                </motion.div>
+              )}
+
+              <form onSubmit={handleDevAuth}>
+                <input
+                  type="password"
+                  placeholder="Enter password..."
+                  value={devPassword}
+                  onChange={(e) => setDevPassword(e.target.value)}
+                  autoFocus
+                  style={{
+                    width: '100%',
+                    background: 'rgba(0,0,0,0.3)',
+                    border: '1px solid #10b981',
+                    borderRadius: '8px',
+                    padding: '16px',
+                    color: 'white',
+                    fontFamily: 'Space Grotesk',
+                    fontSize: '1rem',
+                    marginBottom: '32px',
+                    outline: 'none'
+                  }}
+                />
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    style={{
+                      background: '#10b981',
+                      color: 'black',
+                      padding: '14px',
+                      borderRadius: '8px',
+                      fontWeight: '800'
+                    }}
+                  >
+                    AUTHENTICATE
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowDevModal(false);
+                      setDevPassword('');
+                    }}
+                    style={{
+                      background: 'none',
+                      border: '1px solid #dc2626',
+                      color: '#dc2626',
+                      padding: '14px',
+                      borderRadius: '8px',
+                      fontWeight: '800',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    CANCEL
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header & Balance */}
       <div style={{ 
         display: 'flex', 
@@ -259,14 +424,28 @@ export default function MiniGames() {
           gap: '16px',
           boxShadow: '0 0 20px rgba(251, 191, 36, 0.2)'
         }}>
-          <div style={{ opacity: 0.5, borderRight: '1px solid var(--border-subtle)', paddingRight: '12px' }}>
-            <Lock size={16} />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+          {!isDev && (
+            <button 
+              onClick={() => setShowDevModal(true)}
+              style={{ 
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                opacity: 0.5, 
+                borderRight: '1px solid var(--border-subtle)', 
+                paddingRight: '12px',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <Lock size={16} color="#fbbf24" />
+            </button>
+          )}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginLeft: isDev ? '0' : '0' }}>
             <span style={{ fontSize: '10px', color: '#fbbf24', fontWeight: '800', letterSpacing: '0.1em' }}>BALANCE</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Coins size={18} color="#fbbf24" />
-              <span style={{ fontSize: '24px', fontWeight: '900', fontFamily: 'Space Grotesk' }}>{balance}</span>
+              <span style={{ fontSize: '24px', fontWeight: '900', fontFamily: 'Space Grotesk' }}>{balance.toLocaleString()}</span>
             </div>
           </div>
         </div>
