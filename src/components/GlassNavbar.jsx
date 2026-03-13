@@ -107,29 +107,31 @@ const GlassNavbar = ({ username }) => {
 
         {/* Desktop Buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <button className="btn-primary" style={{ padding: '8px 20px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Users size={16} />
-            MEMBERS (1)
-          </button>
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <button className="btn-primary" style={{ padding: '8px 20px', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Users size={16} />
+              MEMBERS (1)
+            </button>
 
-          <button 
-            onClick={handleLogout}
-            className="navbar-link" 
-            style={{ 
-              background: 'none',
-              border: 'none',
-              padding: '10px',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              color: 'var(--accent-magenta)',
-              transition: 'all 0.2s ease'
-            }}
-            title="SIGN OUT"
-          >
-            <LogOut size={18} />
-          </button>
+            <button 
+              onClick={handleLogout}
+              className="navbar-link" 
+              style={{ 
+                background: 'none',
+                border: 'none',
+                padding: '10px',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                color: 'var(--accent-magenta)',
+                transition: 'all 0.2s ease'
+              }}
+              title="SIGN OUT"
+            >
+              <LogOut size={18} />
+            </button>
+          </div>
           
           {/* Mobile Menu Toggle */}
           <button 
@@ -138,12 +140,14 @@ const GlassNavbar = ({ username }) => {
               border: 'none',
               color: 'var(--text-secondary)',
               cursor: 'pointer',
-              display: 'none'
+              display: 'none',
+              padding: '8px',
+              marginRight: '-8px'
             }}
             className="mobile-toggle"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -158,8 +162,8 @@ const GlassNavbar = ({ username }) => {
             style={{
               position: 'absolute',
               top: '100%',
-              left: '20px',
-              right: '20px',
+              left: '10px',
+              right: '10px',
               marginTop: '10px',
               zIndex: 999
             }}
@@ -169,8 +173,9 @@ const GlassNavbar = ({ username }) => {
               padding: '24px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '12px',
-              border: '1px solid var(--border-bright)'
+              gap: '8px',
+              border: '1px solid var(--border-bright)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
             }}>
               {navLinks.map((link) => (
                 <NavLink
@@ -184,7 +189,7 @@ const GlassNavbar = ({ username }) => {
                     gap: '12px',
                     padding: '14px',
                     borderRadius: '12px',
-                    fontSize: '13px',
+                    fontSize: '14px',
                     fontFamily: 'Space Grotesk',
                     fontWeight: '700',
                     textDecoration: 'none',
@@ -199,6 +204,23 @@ const GlassNavbar = ({ username }) => {
               <div style={{ height: '1px', background: 'var(--border-subtle)', margin: '8px 0' }} />
               
               <button 
+                className="btn-primary"
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '12px', 
+                  padding: '14px', 
+                  borderRadius: '12px',
+                  width: '100%',
+                  justifyContent: 'center',
+                  fontSize: '14px'
+                }}
+              >
+                <Users size={18} />
+                MEMBERS (1)
+              </button>
+
+              <button 
                 onClick={handleLogout}
                 style={{
                   display: 'flex',
@@ -206,14 +228,15 @@ const GlassNavbar = ({ username }) => {
                   gap: '12px',
                   padding: '14px',
                   borderRadius: '12px',
-                  fontSize: '13px',
+                  fontSize: '14px',
                   fontFamily: 'Space Grotesk',
                   fontWeight: '700',
                   color: 'var(--accent-magenta)',
                   background: 'rgba(255, 0, 229, 0.05)',
                   border: '1px solid rgba(255, 0, 229, 0.1)',
                   cursor: 'pointer',
-                  textAlign: 'left'
+                  justifyContent: 'center',
+                  marginTop: '4px'
                 }}
               >
                 <LogOut size={18} />
@@ -240,6 +263,8 @@ const GlassNavbar = ({ username }) => {
         @media (max-width: 1024px) {
           .desktop-only { display: none !important; }
           .mobile-toggle { display: block !important; }
+          nav { padding: 10px !important; }
+          .glass-panel { padding: 8px 16px !important; }
         }
       `}</style>
     </nav>

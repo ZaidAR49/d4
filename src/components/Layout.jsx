@@ -15,11 +15,14 @@ const Layout = ({ children }) => {
       
       {!isLoginPage && <GlassNavbar username={username} />}
       
-      <main style={{
-        paddingTop: isLoginPage ? 0 : '100px',
-        position: 'relative',
-        zIndex: 1
-      }}>
+      <main 
+        className="main-content"
+        style={{
+          paddingTop: isLoginPage ? 0 : '100px',
+          position: 'relative',
+          zIndex: 1
+        }}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
@@ -40,6 +43,14 @@ const Layout = ({ children }) => {
           max-width: 1200px;
           margin: 0 auto;
           padding: 20px;
+        }
+        @media (max-width: 768px) {
+          .main-content {
+            padding-top: ${isLoginPage ? '0' : '80px'} !important;
+          }
+          .page-container {
+            padding: 16px;
+          }
         }
       `}</style>
     </div>
